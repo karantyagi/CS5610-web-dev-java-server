@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<title>User Admin</title>
+
+<script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+
+  <script src="../../services/user.service.client.js"></script>
+  <script src="user-admin.controller.client.js"></script>
+
+</head>
+<body>
+	<br>
+	<div class="container">
+		<div class="card shadow-sm p-3 mb-5 bg-white rounded">
+			<div class="card-header text-center">
+    			<h1 id="title">User Admin</h1>
+  			</div>
+	</div>
+	<div class="container">
+		<div class="card shadow p-3 mb-5 bg-white rounded">
+			<table class="table">
+	    <thead>
+	      <tr>
+	        <th>Username</th>
+	        <th>Password</th>
+	        <th>First Name</th>
+	        <th>Last Name</th>
+	        <th></th>
+	      </tr>
+	      <tr>
+	        <th><input id="usernameFld" class="form-control" placeholder="john91"/></th>
+	        <th><input id="passwordFld" class="form-control" type="**password**"/></th>
+	        <th><input id="firstNameFld" class="form-control" placeholder="John"/></th>
+	        <th><input id="lastNameFld" class="form-control" placeholder="Doe"/></th>
+	        <th><button id="createUser" class="btn btn-success"><i class="fas fa-plus"></i> Create</button></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr class="template">
+	        <td class="username">paul</td>
+	        <td>*****</td>
+	        <td>Paul</td>
+	        <td>Walker</td>
+	        <th>
+	          <button class="edit btn btn-primary"><i class="fas fa-pencil-alt"></i></button>&nbsp;&nbsp;<button class="delete btn btn-danger"><i class="fas fa-times"></i></button>
+	        </th>
+	      </tr>
+
+	      <tr class="template">
+	        <td class="username">paul</td>
+	        <td>*****</td>
+	        <td>Paul</td>
+	        <td>Walker</td>
+	        <th>
+	          <button class="edit btn btn-primary"><i class="fas fa-pencil-alt"></i></button>&nbsp;&nbsp;<button class="delete btn btn-danger"><i class="fas fa-times"></i></button>
+	        </th>
+	      </tr>
+
+	      <tr class="template">
+	        <td class="username">paul</td>
+	        <td>*****</td>
+	        <td>Paul</td>
+	        <td>Walker</td>
+	        <th>
+	          <button class="edit btn btn-primary"><i class="fas fa-pencil-alt"></i></button>&nbsp;&nbsp;<button class="delete btn btn-danger"><i class="fas fa-times"></i></button>
+	        </th>
+	      </tr>
+
+	      <tr class="template">
+	        <td class="username">paul</td>
+	        <td>*****</td>
+	        <td>Paul</td>
+	        <td>Walker</td>
+	        <th>
+	          <button class="edit btn btn-primary"><i class="fas fa-pencil-alt"></i></button>&nbsp;&nbsp;<button class="delete btn btn-danger"><i class="fas fa-times"></i></button>
+	        </th>
+	      </tr>
+
+	      <tr class="template">
+	        <td class="username">paul</td>
+	        <td>*****</td>
+	        <td>Paul</td>
+	        <td>Walker</td>
+	        <th>
+	          <button class="edit btn btn-primary"><i class="fas fa-pencil-alt"></i></button>&nbsp;&nbsp;<button class="delete btn btn-danger"><i class="fas fa-times"></i></button>
+	        </th>
+	      </tr>
+	    </tbody>
+	    <tfoot></tfoot>
+	  </table>
+		</div>
+	  </div>
+	</div>
+</body>
+</html>
+
