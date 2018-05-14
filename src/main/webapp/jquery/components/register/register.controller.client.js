@@ -1,57 +1,67 @@
 (function () {
 	jQuery(main);
-	
-	var tbody;
-	var template;
 	var userService = new UserServiceClient()
 	
 	function main(){
-		
-		
-    	$('#registerUser').click(register);
-    	
-    	
-    	
-    	}
+    	$('#registerBtn').click(register);
+    	} //end of main function
+
 	
-	
-	function register(user) {
-        userService
-            .findUserById(userId)
-            .then(renderUser);
-    }
-	
-	
-	
-	function registerUser(){
-		var username = $('#usernameFld').val();
+	function validate(){
+		// read values from UI
+    	var username = $('#usernameFld').val();
 		var password = $('#passwordFld').val();
 		var verifyPassword = $('#verifyPasswordFld').val();
 		
-			
+		console.log("inside validations");
+		
+		// Validations
+		
 		if(username == ""){
 			alert("Please fill username!");
+			return false;
 		}
-			
 		
 		if(password == ""){
 			alert("Please fill password!");
+			return false;
 		}
 		
 		if(verifyPassword == ""){
 			alert("Please verify password!");
+			return false;
 		}
 		
 		if(password != verifyPassword){
-			alert('Password does not match!');
+			alert('Passwords do not match!');
+			return false;
 		}
 		
 		if(password != "" && password == verifyPassword){
+			return true;
+		}
+		
+	} // end of validate function
+	
+	
+	function register(event) {
+		
+		if(validate()){
+			var username = $('#usernameFld').val();
+			var password = $('#passwordFld').val();
 			var user = {
 					username: username,
 					password: password};
 
-				console.log("now check if....");
+				console.log("USER");
+				console.log(user);
+				
+		}
+      
+    } // end of register function
+	
+	
+	
 
 			//	alert("Please enter another username. This username already exists!");
 
@@ -66,9 +76,6 @@
 //				alert("Registration done! You can login to complete your profile.");
 
 
-		}
-
-   		} // end of register function
 
 
 })();

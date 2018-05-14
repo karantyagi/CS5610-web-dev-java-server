@@ -7,7 +7,7 @@
     var $phone;
     var $role;
     var $date;
-    var userId = 612;
+    var userId = 612; // harshmeet
     
     var userService = new UserServiceClient();
 
@@ -18,8 +18,8 @@
         $phone = $("#inputPhone");
         $role =  $("#inputRole");
         //$date =  $("#inputDate");
-        $updateBtn = $("#updateBtn").click(updateUser);
-        $logoutBtn = $("#logoutBtn").click(logoutUser);
+        $("#updateBtn").click(updateUser);
+        $("#logoutBtn").click(logoutUser);
         
         //console.log( $logoutBtn);
         

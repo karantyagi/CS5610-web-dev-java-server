@@ -1,23 +1,27 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login page</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-<title>Bootstrap Simple Registration Form</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
 <link rel="stylesheet"  href="login.style.client.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<title>Login page</title>
+  <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+
+  <script src="../../services/user.service.client.js"></script>        
+  <script src="profile.controller.client.js"></script>
+
+
 </head>
 <body>
-<div class="signup-form">
-				<h1>Sign In</h1>
-				<form>
-					<div class="form-group row">
+  <div class="container">
+  	<br>
+    <h1 id="title">SIGN IN</h1>
+    <form>
+      					<div class="form-group row">
 						<label for="username" class="col-sm-3 col-form-label">
 							Username </label>
 						<div class="col-sm-12">
@@ -45,7 +49,7 @@
 							</div>
 						</div>
 					</div>
-				</form>			
+  </form>
 </div>
 </body>
-</html>                            
+</html>
