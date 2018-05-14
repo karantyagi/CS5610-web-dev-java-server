@@ -46,6 +46,32 @@
 	}
 
 	
+	function renderUser(user){
+		var clone = template.clone();
+		
+		clone.attr('id',user.id);
+		clone.find('.delete').click(deleteUser);
+		clone.find('.edit').click(updateUser);
+		
+		
+		clone.find('.username')
+		.html(user.username);
+	
+		clone.find('.password')
+		.html(user.password.replace(/[a-z0-9]/g , "*"));
+		
+		clone.find('.firstName')
+		.html(user.firstName);
+		
+		clone.find('.lastName')
+		.html(user.lastName);
+		
+		clone.find('.role')
+		.html(user.role);
+
+		tbody.append(clone);		
+}
+	
 	
 	function renderUsers(users){
 		tbody.empty();
@@ -55,7 +81,7 @@
 				
 				clone.attr('id',user.id);
 				clone.find('.delete').click(deleteUser);
-				clone.find('.edit').click(editUser);
+//				clone.find('.edit').click(updateUser);
 				
 				
 				clone.find('.username')
@@ -76,34 +102,7 @@
 				tbody.append(clone);
 			}
 			
-		}
-	
-	function renderUser(user){
-				var clone = template.clone();
-				
-				clone.attr('id',user.id);
-				clone.find('.delete').click(deleteUser);
-				clone.find('.edit').click(updateUser);
-				
-				
-				clone.find('.username')
-				.html(user.username);
-			
-				clone.find('.password')
-				.html(user.password.replace(/[a-z0-9]/g , "*"));
-				
-				clone.find('.firstName')
-				.html(user.firstName);
-				
-				clone.find('.lastName')
-				.html(user.lastName);
-				
-				clone.find('.role')
-				.html(user.role);
-
-				tbody.append(clone);		
-		}
-	
+		} // end of renderUsers
 	
 	function deleteUser(event){
 //		console.log('deleteUser');
@@ -116,28 +115,27 @@
 		userService
 			.deleteUser(userId)
 			.then(findAllUsers);
-	}
+	} // end of deleteUsers
 	
-function updateUser(event){
-	console.log('editUser');
-	console.log(event);
-	var editBtn = $(event.currentTarget);
-	var userId = editBtn
-	.parent()
-	.parent()
-	.attr('id');
-	
-//	
-//	userService
-//		.updateUser(userId)
-//		.then(findAllUsers);
+	function updateUser(event){
+		console.log('editUser');
+		console.log(event);
+		var editBtn = $(event.currentTarget);
+		var userId = editBtn
+		.parent()
+		.parent()
+		.attr('id');
+		
+	//	
+//		userService
+//			.updateUser(userId)
+//			.then(findAllUsers);
+		}
+
+	function findUserById(userId){
+		userService.
+			findUserById(userId)
 	}
-
-function findUserById(userId){
-	userService.
-		findUserById(userId)
-}
-
 
 
 })();
