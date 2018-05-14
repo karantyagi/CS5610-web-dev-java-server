@@ -14,13 +14,11 @@
 		var password = $('#passwordFld').val();
 		var verifyPassword = $('#verifyPasswordFld').val();
 		
-		console.log(searchUserName(username));
-		
+			
 		if(username == ""){
 			alert("Please fill username!");
 		}
-		
-		
+			
 		
 		if(password == ""){
 			alert("Please fill password!");
@@ -34,23 +32,36 @@
 			alert('Password does not match!');
 		}
 		
-		if(password == verifyPassword){
+		if(password != "" && password == verifyPassword){
 			var user = {
 					username: username,
-					password: password
-			};
+					password: password};
+			// if username is not already taken
 			
-			console.log(user);
 			
-//			userService
-//				.createUser(user);	
+			
+			console.log("now check if");
+
+//			
+//			if(searchUserName(username)!=null){
+//				alert("Please enter another username. This username already exists!");
+//			}
+						
+				userService.register(user);
+				var username = $('#usernameFld').val();
+				var password = $('#passwordFld').val();
+				var user = {
+						username: username,
+						password: password
+				};
+				userService
+				.findUserByUsername(username);
+				alert("Registration done! You can login to complete your profile.");
+			
+
 		}
 
-   		}
-	
-	function searchUserName(username){
-			userService
-					.findUserByUsername(username);
-	}
+   		} // end of register function
+
 
 })();

@@ -44,8 +44,9 @@ public class UserService {
 		return null;
 	}
 	
-	@GetMapping("/api/user/{username}")
+	@GetMapping("/api/username/{username}")
 	public User findUserByUsername(@PathVariable("username") String username) {
+		System.out.println("inside service");
 		Optional<User> data = repository.findUserByUsername(username);
 		if(data.isPresent()) {
 			return data.get();

@@ -5,18 +5,30 @@ function UserServiceClient() {
    this.findUserById = findUserById;
    this.findUserByUsername = findUserByUsername;
    this.updateUser = updateUser;
-   
-  // this.register = register;
+   this.register = register;
    
    this.url =
 'http://localhost:8080/api/user';
+   
+   this.urlusername =
+	   'http://localhost:8080/api/username';
    
    this.login =
        'http://localhost:8080/api/login';
    
    var self = this;
    
- //  function register(username, password){}
+   function register(user){
+//	   fetch('http://localhost:8080/api/user'
+		 return fetch(this.url,{
+				method: 'post',
+				body: JSON.stringify(user),
+				headers: {
+					'content-type': 'application/json'
+				}
+			});
+	 }
+   
    
    function login(username, password) {
        return fetch(self.login, {
@@ -64,8 +76,9 @@ function findUserById(userId) {
 
 
 function findUserByUsername(username) {
-    return fetch(self.url + '/' + username)
+    return fetch(self.urlusername + '/' + username)
 		.then(function(response){
+			//console.log(response.json());
 		            return response.json();
 		});
 }
