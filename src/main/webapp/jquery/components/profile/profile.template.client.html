@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
-<title>Insert title here</title>
+<link rel="stylesheet"  href="profile.style.client.css">
+<title>Profile page</title>
   <script
           src="https://code.jquery.com/jquery-3.3.1.min.js"
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>
 
-  <script src="../../services/user.service.client.js"></script>
-  <script src="profile.controller.client.js"></script>
+
 
 </head>
 <body>
   <div class="container">
+  	<br>
     <h1 id="title">Profile</h1>
-
     <form>
       <div class="form-group row">
 
         <label for="staticUserName" class="col-sm-2 col-form-label">User Name</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticUserName" value="xyz">
+          <input type="text" readonly class="form-control-plaintext" id="staticUserName" placeholder="Alice" readonly>
         </div>
 
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
@@ -30,6 +30,17 @@
           <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
         </div>
       </div>
+      
+      <div class="form-group row">
+        <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPhone" placeholder="(555) 123-4323">
+        </div>
+        </div>
+      
+      
+      
+      
       <div class="form-group row">
         <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
         <div class="col-sm-10">
@@ -61,7 +72,11 @@
       </div>
       <button id="updateBtn"
               type="button"
-              class="btn btn-primary btn-block">Update</button>
+              class="btn btn-success btn-block">Update</button>
+              <br>
+     <button id="logoutBtn"
+              type="button"
+              class="btn btn-danger btn-block">Logout</button>
     </form>
 
   </div>

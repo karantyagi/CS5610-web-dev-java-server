@@ -18,7 +18,7 @@
         $updateBtn = $("#updateBtn")
            .click(updateUser);
 
-        findUserById(12);
+        findUserById(92);
     }
     
     function updateUser(){
@@ -28,7 +28,7 @@
     	        };
 
     	        userService
-    	            .updateUser(12, user)
+    	            .updateUser(92, user)
     	            .then(success);
     	
     }
@@ -47,6 +47,10 @@
             .findUserById(userId)
             .then(renderUser);
     }
+    
+    
+    
+    
     function renderUser(user){
     	console.log(user);
     	$staticUserName.val(user.username);
