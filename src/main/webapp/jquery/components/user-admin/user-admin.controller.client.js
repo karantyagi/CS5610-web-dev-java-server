@@ -19,13 +19,7 @@
 		findAllUsers();
 	} // end of main function
 	
-	function findAllUsers(){
-//		var promise = fetch('http://localhost:8080/api/user');
-////		console.log(users);
-//		promise.then(function (response){
-//			return response.json(); 
-//		}).then(renderUsers);
-		
+	function findAllUsers(){	
 		userService
 			.findAllUsers()
 			.then(renderUsers);
@@ -47,25 +41,65 @@
 				role: role
 		};
 		
+		console.log(user);
+		
 		userService
 			.createUser(user)
-			.then(findAllUsers);
-		
-		console.log(user);
-			
-		
+			.then(findAllUsers);	
 	}
 
-		function renderUsers(users){
+	
+	
+	function renderUsers(users){
+		tbody.empty();
 			for(var i=0; i<users.length; i++){
 				var user = users[i];
 				var clone = template.clone();
+				
+				clone.attr('id',user.id);
+				clone.find('.delete').click(deleteUser);
+				clone.find('.edit').click(editUser);
+				
+				
 				clone.find('.username')
 				.html(user.username);
+			
+				clone.find('.password')
+				.html(user.password.replace(/[a-z0-9]/g , "*"));
+				
+				clone.find('.firstName')
+				.html(user.firstName);
+				
+				clone.find('.lastName')
+				.html(user.lastName);
+				
+				clone.find('.role')
+				.html(user.role);
+
 				tbody.append(clone);
 			}
 			
 		}
+	
+	function deleteUser(event){
+//		console.log('deleteUser');
+//		console.log(event);
+		var deleteBtn = $(event.currentTarget);
+		var userId = deleteBtn
+		.parent()
+		.parent()
+		.attr('id');
+		userService
+			.deleteUser(userId)
+			.then(findAllUsers);
+//		console.log(userId);
 		
+	}
+	
+function editUser(event){
+	console.log('editUser');
+	console.log(event);
+	
+	}
 
 })();

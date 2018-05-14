@@ -70,6 +70,7 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	// yyyy-mm-dd
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}

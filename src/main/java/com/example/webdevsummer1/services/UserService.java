@@ -28,9 +28,9 @@ public class UserService {
 		return repository.save(user);
 	}
 	
-//	@DeleteMapping("/api/user/{userId}")
-//	public void deleteUser(@PathVariable("userId") int id) {
-//		repository.deleteById(id);
-//	}
+	@DeleteMapping("/api/user/{userId}")
+	public void deleteUser(@PathVariable("userId") int id) {
+		repository.deleteById(id);
+	}
 	
 }
