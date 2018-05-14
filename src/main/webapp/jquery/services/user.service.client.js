@@ -11,7 +11,7 @@ function UserServiceClient() {
 'http://localhost:8080/api/user';
    
    this.urlusername =
-	   'http://localhost:8080/api/username';
+	   'http://localhost:8080/api/register';
    
    this.login =
        'http://localhost:8080/api/login';
@@ -42,7 +42,6 @@ function UserServiceClient() {
    
    
    function createUser(user){
-//	   fetch('http://localhost:8080/api/user'
 		 return fetch(this.url,{
 				method: 'post',
 				body: JSON.stringify(user),
@@ -60,6 +59,8 @@ function UserServiceClient() {
 			});
    }
    
+   
+   
 function deleteUser(userId){
 	return fetch(self.url + '/' + userId, {
 		method: 'delete'
@@ -75,13 +76,29 @@ function findUserById(userId) {
 }
 
 
+//function findUserByUsername(username) {
+//    return fetch(self.urlusername + '/' + username)
+//		.then(function(response){
+//			if(response) {
+//	        	console.log("user found");
+//	        } else {
+//	        	console.log("NO user found");
+//	        }
+//			console.log(response.body);
+//			console.log(response.bodyUsed);
+//			console.log(response.header);
+//			console.log(response);
+//		            return response;
+//		});
+//}
+
 function findUserByUsername(username) {
     return fetch(self.urlusername + '/' + username)
-		.then(function(response){
-			//console.log(response.json());
-		            return response.json();
-		});
+			    .then(function(response){
+			        return response.json();
+			    });
 }
+
 
 
 function updateUser(userId, user) {
@@ -93,12 +110,8 @@ function updateUser(userId, user) {
         }
     })
     .then(function(response){
-        if(response.bodyUsed) {
         	console.log(response);
             return response.json();
-        } else {
-            return null;
-        }
     });
 }
 

@@ -6,8 +6,22 @@
 	var userService = new UserServiceClient()
 	
 	function main(){
-    	$('#registerUser').click(registerUser);
+		
+		
+    	$('#registerUser').click(register);
+    	
+    	
+    	
     	}
+	
+	
+	function register(user) {
+        userService
+            .findUserById(userId)
+            .then(renderUser);
+    }
+	
+	
 	
 	function registerUser(){
 		var username = $('#usernameFld').val();
@@ -36,28 +50,21 @@
 			var user = {
 					username: username,
 					password: password};
-			// if username is not already taken
-			
-			
-			
-			console.log("now check if");
 
-//			
-//			if(searchUserName(username)!=null){
-//				alert("Please enter another username. This username already exists!");
-//			}
-						
-				userService.register(user);
-				var username = $('#usernameFld').val();
-				var password = $('#passwordFld').val();
-				var user = {
-						username: username,
-						password: password
-				};
-				userService
-				.findUserByUsername(username);
-				alert("Registration done! You can login to complete your profile.");
-			
+				console.log("now check if....");
+
+			//	alert("Please enter another username. This username already exists!");
+
+//				userService.register(user);
+//				var username = $('#usernameFld').val();
+//				var password = $('#passwordFld').val();
+//				var user = {
+//						username: username,
+//						password: password
+//				};
+				
+//				alert("Registration done! You can login to complete your profile.");
+
 
 		}
 

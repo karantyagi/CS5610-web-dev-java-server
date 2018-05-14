@@ -1,36 +1,53 @@
 (function() {
     $(init);
     
-    var $staticEmail;
+    
     var $staticUserName;
-    var $firstName;
-    var $lastName;
-    var $updateBtn;
+    var $email;
+    var $phone;
+    var $role;
+    var $date;
+    var userId = 612;
     
     var userService = new UserServiceClient();
 
     function init() {
 
     	$staticUserName = $("#staticUserName");
-    	$staticEmail = $("#staticEmail");
-        $firstName = $("#firstName");
-        $lastName = $("#lastName");
-        $updateBtn = $("#updateBtn")
-           .click(updateUser);
+    	$email = $("#inputEmail");
+        $phone = $("#inputPhone");
+        $role =  $("#inputRole");
+        //$date =  $("#inputDate");
+        $updateBtn = $("#updateBtn").click(updateUser);
+        $logoutBtn = $("#logoutBtn").click(logoutUser);
+        
+        //console.log( $logoutBtn);
+        
+        //console.log("DATE:");
+        //console.log($date);
+       
+       findUserById(userId);
 
-        findUserById(92);
+   
+        
     }
     
     function updateUser(){
     	 var user = {
-    	            firstName: $firstName.val(),
-    	            lastName: $lastName.val()
+    	            phone: $phone.val(),
+    	            email: $email.val(),
+    	            role: $role.val()
     	        };
 
-    	        userService
-    	            .updateUser(92, user)
+  	        	userService
+    	            .updateUser(userId, user)
     	            .then(success);
     	
+    }
+    
+    
+    function logoutUser(){
+    	window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
     }
     
     function success(response) {
@@ -48,15 +65,13 @@
             .then(renderUser);
     }
     
-    
-    
-    
     function renderUser(user){
     	console.log(user);
     	$staticUserName.val(user.username);
-    	$staticEmail.val(user.email);
-        $firstName.val(user.firstName);
-        $lastName.val(user.lastName);
+    	$email.val(user.email);
+    	$phone.val(user.phone);
+    	$role.val(user.role);
+    	//$date.val(user.date);
     }
 
 })();
