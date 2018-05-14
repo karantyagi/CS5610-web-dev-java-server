@@ -44,6 +44,15 @@ public class UserService {
 		return null;
 	}
 	
+	@GetMapping("/api/user/{username}")
+	public User findUserByUsername(@PathVariable("username") String username) {
+		Optional<User> data = repository.findUserByUsername(username);
+		if(data.isPresent()) {
+			return data.get();
+		}
+		return null;
+	}
+	
 	@PutMapping("/api/user/{userId}")
 	public User updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
 		Optional<User> data = repository.findById(userId);

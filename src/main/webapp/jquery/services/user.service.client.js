@@ -3,6 +3,7 @@ function UserServiceClient() {
    this.findAllUsers = findAllUsers;
    this.deleteUser = deleteUser;
    this.findUserById = findUserById;
+   this.findUserByUsername = findUserByUsername;
    this.updateUser = updateUser;
    
   // this.register = register;
@@ -63,7 +64,10 @@ function findUserById(userId) {
 
 
 function findUserByUsername(username) {
-    return fetch(self.url + '/' + username);
+    return fetch(self.url + '/' + username)
+		.then(function(response){
+		            return response.json();
+		});
 }
 
 

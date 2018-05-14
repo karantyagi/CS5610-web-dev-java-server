@@ -14,7 +14,7 @@
 		var password = $('#passwordFld').val();
 		var verifyPassword = $('#verifyPasswordFld').val();
 		
-		searchUserName(username);
+		console.log(searchUserName(username));
 		
 		if(username == ""){
 			alert("Please fill username!");
@@ -49,9 +49,8 @@
    		}
 	
 	function searchUserName(username){
-		console.log
-			(userService
-					.findUserByUsername(username));
+			userService
+					.findUserByUsername(username);
 	}
 
 })();
