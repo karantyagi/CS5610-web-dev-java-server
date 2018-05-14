@@ -8,9 +8,6 @@
 	var userService = new UserServiceClient()
 	
 	function main(){
-//		var h1=jQuery('h1');
-//		h1.css('color','red');
-//		h1.html('User Admin Panel');
 		
 		tbody = $('tbody');
 		template = $('.template');
@@ -81,6 +78,33 @@
 			
 		}
 	
+	function renderUser(user){
+				var clone = template.clone();
+				
+				clone.attr('id',user.id);
+				clone.find('.delete').click(deleteUser);
+				clone.find('.edit').click(updateUser);
+				
+				
+				clone.find('.username')
+				.html(user.username);
+			
+				clone.find('.password')
+				.html(user.password.replace(/[a-z0-9]/g , "*"));
+				
+				clone.find('.firstName')
+				.html(user.firstName);
+				
+				clone.find('.lastName')
+				.html(user.lastName);
+				
+				clone.find('.role')
+				.html(user.role);
+
+				tbody.append(clone);		
+		}
+	
+	
 	function deleteUser(event){
 //		console.log('deleteUser');
 //		console.log(event);
@@ -92,14 +116,28 @@
 		userService
 			.deleteUser(userId)
 			.then(findAllUsers);
-//		console.log(userId);
-		
 	}
 	
-function editUser(event){
+function updateUser(event){
 	console.log('editUser');
 	console.log(event);
+	var editBtn = $(event.currentTarget);
+	var userId = editBtn
+	.parent()
+	.parent()
+	.attr('id');
 	
+//	
+//	userService
+//		.updateUser(userId)
+//		.then(findAllUsers);
 	}
+
+function findUserById(userId){
+	userService.
+		findUserById(userId)
+}
+
+
 
 })();
