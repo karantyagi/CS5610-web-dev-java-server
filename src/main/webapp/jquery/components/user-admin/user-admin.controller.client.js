@@ -69,7 +69,12 @@
 				role: role};
 		userService
 			.createUser(user)
-			.then(findAllUsers);	
+			.then(findAllUsers);
+		$('#usernameFld').val("");
+		$('#passwordFld').val("");
+		$('#firstNameFld').val("");
+		$('#lastNameFld').val("");
+		$('#role').val("FACULTY");
 	}
 	
 	
@@ -127,27 +132,24 @@
 			userService
 	        .updateUser(updateId, user)
 	        .then(findAllUsers);
+			$('#usernameFld').val("");
+			$('#passwordFld').val("");
+			$('#firstNameFld').val("");
+			$('#lastNameFld').val("");
+			$('#role').val("FACULTY");
 			alert('User successfully updated!')
 		}
 	}
 	
-	function updateSuccess(response) {
-        if(response === null) {
-            alert('unable to update user')
-        } else {
-            console.log('User successfully updated!');
-        }
-    }
-	
 	function findUserById(updateId) {
         userService
             .findUserById(updateId)
-            .then(renderUser);
+            .then(selectUser);
     }
 	
 	// render user populates the fields
-	function renderUser(user){
-		//console.log("inside renderUser ..we are getting correct user");
+	function selectUser(user){
+		//console.log("inside selectUser ..we are getting correct user");
 		//console.log(user);
 		$('#usernameFld').val(user.username);
 		$('#passwordFld').val(user.password);

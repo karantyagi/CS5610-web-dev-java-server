@@ -52,12 +52,26 @@ public class UserService {
 	
 	@GetMapping("/api/register/{username}")
 	public User findUserByUsername(@PathVariable("username") String username) {
-		Iterable<User> users = repository.findUserByUsername(username);
-		Iterator<User> data = users.iterator();
-		if(data.hasNext()) {
-			return data.next();
+		Optional<User> data = repository.findUserByUsername(username);
+		if(data.isPresent()) {
+			System.out.println("ID: "+data.get().getId());
+			return data.get();
 		}
-		return null;
+		else {
+			System.out.println("ID: -1 {NO USER FOUND}");
+			User none = new User();
+			none.setId(-1);
+			none.setUsername(null);
+			none.setDateOfBirth(null);
+			none.setEmail(null);
+			none.setFirstName(null);
+			none.setLastName(null);
+			none.setRole(null);
+			none.setLastName(null);
+			none.setPhone(null);
+			return none;
+		}
+		
 	}
 	
 	@PutMapping("/api/user/{userId}")
@@ -67,6 +81,7 @@ public class UserService {
 			User user = data.get();
 			user.setEmail(newUser.getEmail());
 			user.setPhone(newUser.getPhone());
+			user.setPassword(newUser.getPassword());
 			user.setUsername(newUser.getUsername());
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());

@@ -77,30 +77,9 @@ function findUserById(userId) {
 function findUserByUsername(username) {
     return fetch(self.urlregister + '/' + username)
 			    .then(function(response){
-			    	console.log(response);
-			        return response;
+			        return response.json();
 			    });
 }
-
-
-
-//function findUserByUsername(username) {
-//    return fetch(self.urlusername + '/' + username)
-//		.then(function(response){
-//			if(response) {
-//	        	console.log("user found");
-//	        } else {
-//	        	console.log("NO user found");
-//	        }
-//			console.log(response.body);
-//			console.log(response.bodyUsed);
-//			console.log(response.header);
-//			console.log(response);
-//		            return response;
-//		});
-//}
-
-
 
 
 function updateUser(userId, user) {

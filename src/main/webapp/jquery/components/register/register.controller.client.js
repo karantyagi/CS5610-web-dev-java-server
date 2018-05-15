@@ -52,41 +52,54 @@
 			var user = {
 					username: username,
 					password: password};
-			
-			user1=userService
-				.findUserByUsername(username)
+				//console.log("NEW USER to be registered, into database:");
+				//console.log(user);
 				
-			
-			
-			
-			
-				console.log("USER");
-				console.log(user);
-				
-//				userService
-//				.registerUser(user)
-//				.then(success);	
+				//console.log("Check if username already taken ?");
+				//console.log(user.username);
+				userService
+					.findUserByUsername(user.username)
+					.then(foundSuccess);
+	
 		}
 
       
     } // end of register function
 	
-	
-	
+	 function foundSuccess(user) {
+	        if(user.id == -1) {	        	
+	        	
+				var newUser = {
+						username: $('#usernameFld').val(),
+						password: $('#passwordFld').val()};
+	        	
+	        	userService
+				.registerUser(newUser)
+				.then(success);	
+	        	//alert("Registration done! You can login and update your profile.");
+	        } 
+	        else {
+	        	// Some user with the same username found..
+	        	clear();
+	        	alert("Please enter another username. This username already exists!");
+	        	
+	        }
+	    } // end of foundSuccess function
+
 	 function success(response) {
 	        if(response === null) {
 	            alert('Unable to register. Please try again.')
 	        } else {
-	            alert("Registration done! You can login and update your profile.");
+	            alert("Registration done! You can now login and update your profile.");
+	            clear();
+	            
 	        }
 	    } // end of success function
-
 	 
-	 
-	 
-	 
-			//	alert("Please enter another username. This username already exists!");
-
-
+	 function clear(){
+			$('#usernameFld').val("");
+			$('#passwordFld').val("");
+			$('#verifyPasswordFld').val("");
+	 }
 
 })();
