@@ -12,6 +12,8 @@
 		tbody = $('tbody');
 		template = $('.template');
 		$('#createUser').click(createUser);
+		$('#updateUser').click(updateUser);
+		
 	
 		findAllUsers();
 	} // end of main function
@@ -51,7 +53,7 @@
 		
 		clone.attr('id',user.id);
 		clone.find('.delete').click(deleteUser);
-		clone.find('.edit').click(updateUser);
+		clone.find('.edit').click(editUser);
 		
 		
 		clone.find('.username')
@@ -108,14 +110,37 @@
 //		console.log('deleteUser');
 //		console.log(event);
 		var deleteBtn = $(event.currentTarget);
+		
 		var userId = deleteBtn
 		.parent()
 		.parent()
 		.attr('id');
+		
 		userService
 			.deleteUser(userId)
 			.then(findAllUsers);
 	} // end of deleteUsers
+	
+	
+	function updateUser(){
+		var username = $('#usernameFld').val();
+		var password = $('#passwordFld').val();
+		var firstName = $('#firstNameFld').val();
+		var lastName = $('#lastNameFld').val();
+		var role = $('#role').val();
+	
+		var user = {
+				username: username,
+				password: password,
+				firstName: firstName,
+				lastName: lastName,
+				role: role
+		};
+		
+		console.log("UPDATE Button Clicked...")
+		console.log("Updating user with following values:")
+		console.log(user);
+	}
 	
 	function updateUser(event){
 		console.log('editUser');

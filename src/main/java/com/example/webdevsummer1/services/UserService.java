@@ -1,5 +1,6 @@
 package com.example.webdevsummer1.services;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,11 @@ public class UserService {
 		return repository.save(user);
 	}
 	
+	@PostMapping("/api/register")
+	public User registerUser(@RequestBody User user) {
+		return repository.save(user);
+	}
+	
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
 		repository.deleteById(id);
@@ -46,9 +52,10 @@ public class UserService {
 	
 	@GetMapping("/api/register/{username}")
 	public User findUserByUsername(@PathVariable("username") String username) {
-		Optional<User> data = repository.findUserByUsername(username);
-		if(data.isPresent()) {
-			return data.get();
+		Iterable<User> users = repository.findUserByUsername(username);
+		Iterator<User> data = users.iterator();
+		if(data.hasNext()) {
+			return data.next();
 		}
 		return null;
 	}

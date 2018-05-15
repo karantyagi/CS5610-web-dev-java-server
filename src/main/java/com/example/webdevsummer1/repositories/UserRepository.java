@@ -1,6 +1,5 @@
 package com.example.webdevsummer1.repositories;
 
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,6 +16,6 @@ Iterable<User> findUserByCredentials(
 	@Param("password") String password);
 
 @Query("SELECT u FROM User u WHERE u.username=:username")
-Optional<User> findUserByUsername(
+Iterable<User> findUserByUsername(
 		@Param("username") String username); 
 }

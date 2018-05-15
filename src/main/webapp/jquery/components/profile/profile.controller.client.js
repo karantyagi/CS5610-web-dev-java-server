@@ -54,7 +54,7 @@
         if(response === null) {
             alert('unable to update')
         } else {
-            alert('success');
+            alert('Profile updated successfully!');
         }
     }
 

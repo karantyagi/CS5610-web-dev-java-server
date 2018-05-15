@@ -52,29 +52,40 @@
 			var user = {
 					username: username,
 					password: password};
-
+			
+			user1=userService
+				.findUserByUsername(username)
+				
+			
+			
+			
+			
 				console.log("USER");
 				console.log(user);
 				
+//				userService
+//				.registerUser(user)
+//				.then(success);	
 		}
+
       
     } // end of register function
 	
 	
 	
+	 function success(response) {
+	        if(response === null) {
+	            alert('Unable to register. Please try again.')
+	        } else {
+	            alert("Registration done! You can login and update your profile.");
+	        }
+	    } // end of success function
 
+	 
+	 
+	 
+	 
 			//	alert("Please enter another username. This username already exists!");
-
-//				userService.register(user);
-//				var username = $('#usernameFld').val();
-//				var password = $('#passwordFld').val();
-//				var user = {
-//						username: username,
-//						password: password
-//				};
-				
-//				alert("Registration done! You can login to complete your profile.");
-
 
 
 
