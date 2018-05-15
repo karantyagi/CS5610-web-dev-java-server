@@ -70,8 +70,7 @@ function deleteUser(userId){
 function findUserById(userId) {
     return fetch(self.url + '/' + userId)
         .then(function(response){
-        	
-            return response;
+            return response.json();
         });
 }
 

@@ -67,7 +67,11 @@ public class UserService {
 			User user = data.get();
 			user.setEmail(newUser.getEmail());
 			user.setPhone(newUser.getPhone());
+			user.setUsername(newUser.getUsername());
+			user.setFirstName(newUser.getFirstName());
+			user.setLastName(newUser.getLastName());
 			user.setRole(newUser.getRole());
+			user.setDateOfBirth(newUser.getDateOfBirth());
 			repository.save(user);
 			return user;
 		}
