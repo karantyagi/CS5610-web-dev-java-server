@@ -62,12 +62,12 @@ public class UserService {
 			User none = new User();
 			none.setId(-1);
 			none.setUsername(null);
+			none.setPassword(null);
 			none.setDateOfBirth(null);
 			none.setEmail(null);
 			none.setFirstName(null);
 			none.setLastName(null);
 			none.setRole(null);
-			none.setLastName(null);
 			none.setPhone(null);
 			return none;
 		}
@@ -79,6 +79,8 @@ public class UserService {
 		Optional<User> data = repository.findById(userId);
 		if(data.isPresent()) {
 			User user = data.get();
+			user.setUsername(newUser.getUsername());
+			user.setPassword(newUser.getPassword());
 			user.setEmail(newUser.getEmail());
 			user.setPhone(newUser.getPhone());
 			user.setFirstName(newUser.getFirstName());
