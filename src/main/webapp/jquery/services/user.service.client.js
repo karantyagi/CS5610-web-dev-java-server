@@ -33,7 +33,11 @@ function UserServiceClient() {
 				headers: {
 					'content-type': 'application/json'
 				}
-			});
+			})
+			 .then(function(response){
+			       	console.log(response);
+			           return response.json();
+			   });
 	 }
    
    

@@ -86,15 +86,12 @@
 	        }
 	    } // end of foundSuccess function
 
-	 function success(response) {
-	        if(response === null) {
-	            alert('Unable to register. Please try again.')
-	        } else {
+	 function success(user) {
+	            console.log("ID :", user.id);
 	            alert("Registration done! You can now update your profile.");
-	            // TO DO
-	            clear();
-	            
-	        }
+	            window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html"+"?id="+user.id);
+	            //clear();
+
 	    } // end of success function
 	 
 	 function clear(){
