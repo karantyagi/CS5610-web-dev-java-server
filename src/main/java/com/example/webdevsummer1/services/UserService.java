@@ -94,6 +94,24 @@ public class UserService {
 		return null;
 	}
 	
+	@PutMapping("/api/register/{userId}")
+	public User updateUserProfile(@PathVariable("userId") int userId, @RequestBody User newUser) {
+		Optional<User> data = repository.findById(userId);
+		if(data.isPresent()) {
+			User user = data.get();
+			user.setEmail(newUser.getEmail());
+			user.setPhone(newUser.getPhone());
+			user.setFirstName(newUser.getFirstName());
+			user.setLastName(newUser.getLastName());
+			user.setRole(newUser.getRole());
+			user.setDateOfBirth(newUser.getDateOfBirth());
+			//System.out.println("\n.\n.\n.\n.\nUSER DOB:"+user.getDateOfBirth()+"\n.\n.\n.\n.");
+			repository.save(user);
+			return user;
+		}
+		return null;
+	}
+	
 	@PostMapping("/api/login")
 	public List<User> loginUser(@RequestBody User user) {
 		return (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());

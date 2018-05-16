@@ -50,7 +50,7 @@
     	        };
 
   	        	userService
-    	            .updateUser(userId, user)
+    	            .updateUserProfile(userId, user)
     	            .then(success);	
     }
     

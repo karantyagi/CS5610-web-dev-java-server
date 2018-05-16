@@ -5,6 +5,7 @@ function UserServiceClient() {
    this.findUserById = findUserById;
    this.findUserByUsername = findUserByUsername;
    this.updateUser = updateUser;
+   this.updateUserProfile = updateUserProfile;
    this.registerUser = registerUser;
    this.loginUser = loginUser;
    
@@ -100,6 +101,20 @@ function findUserByUsername(username) {
 
 function updateUser(userId, user) {
     return fetch(self.url + '/' + userId, {
+        method: 'put',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    .then(function(response){
+        	console.log(response);
+            return response.json();
+    });
+}
+
+function updateUserProfile(userId, user) {
+    return fetch(self.urlregister + '/' + userId, {
         method: 'put',
         body: JSON.stringify(user),
         headers: {
