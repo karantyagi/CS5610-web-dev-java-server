@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>User management application</title>
+    <title>User management</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
@@ -19,14 +19,18 @@
      <br/>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
+        &nbsp;&nbsp;&nbsp;&nbsp;
           <li class="nav-item">
             <a class="nav-link" href="http://localhost:8080/jquery/components/user-admin/user-admin.template.client.html">User-Admin</a>
-          </li>
+          </li>&nbsp;&nbsp;&nbsp;&nbsp;
           <li class="nav-item">
             <a class="nav-link " href="http://localhost:8080/jquery/components/register/register.template.client.html">Register</a>
-          </li>
-          <li class="nav-item">
+          </li>&nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item">          	
             <a class="nav-link " href="http://localhost:8080/jquery/components/login/login.template.client.html">Login In</a>
+          </li>&nbsp;&nbsp;&nbsp;&nbsp; 
+          <li class="nav-item">
+            <a class="nav-link " href="http://localhost:8080/api/user">User Data (/api/user)</a>
           </li>
         </ul>
   
@@ -37,9 +41,30 @@
 		<br><br><br><br>
       <div class="card">
   		<div class="card-body">
-        <h2>User Management Module</h2>
-        <br>
+        <h2>User Management Web Appication</h2>
         <p>We have a Tomcat/Java server which is connected to MySQL database, and is hosting the jQuery client.</p>
+        <h3>Features</h3>
+        <ul>
+        	<li>User Admin module allows admin users to create, find, update and delete users (CRUD operations)</li>
+        	<li>Registration module allows anyone to register as a user </li>
+        	<li>Login module allows anyone to login</li>
+        	<li>Profile module allows logged in users to update their profile information</li>
+        
+        </ul>
+        <hr>
+        <h3>Architecture</h3>
+        <h5>Front end</h5>
+        <p>
+        The front end will consist of HTML pages dynamically rendered using JQuery,
+         a popular JavaScript library for programmatically manipulating the DOM. 
+        The HTML and JQuery will be used to create a browser based client application.
+        </p>
+        <h5>Middle tier and database</h5>
+        <p> The client application will use AJAX to communicate with a Java based middle
+         tier running on a tomcat server. The Spring boot framework will provide useful
+          abstractions and boilerplate behaviors to define Web services, Java data modeling, 
+          and object relational mapping to a relational database. JPA will map Java data models 
+          to a MySQL database.<p>
       </div>
 	</div>
     </div>
