@@ -6,6 +6,7 @@
 	var tbody;
 	var template;
 	var updateId = -1;
+	var userSelected = false;
 	var userService = new UserServiceClient()
 	
 	function main(){
@@ -14,6 +15,8 @@
 		template = $('.template');
 		$('#createUser').click(createUser);
 		$('#updateUser').click(updateUser);
+		var updateId = -1;
+		var userSelected = false;
 		findAllUsers();
 	} // end of main function
 	
@@ -55,6 +58,7 @@
 		} // end of renderUsers
 
 	function createUser(){
+		if(!userSelected){
 		var username = $('#usernameFld').val();
 		var password = $('#passwordFld').val();
 		var firstName = $('#firstNameFld').val();
@@ -76,6 +80,11 @@
 		$('#lastNameFld').val("");
 		$('#role').val("FACULTY");
 	}
+		else{
+			alert("You are editing this user, please press update/check.\n Don't press add(+), as this user has already been created earlier.");
+			
+		}
+	}
 	
 	
 	function deleteUser(event){
@@ -95,6 +104,7 @@
 	
 	function editUser(event){
 		console.log('editUser clicked');
+		userSelected = true;
 		var editBtn = $(event.currentTarget);
 		var userId = editBtn
 		.parent()
@@ -105,10 +115,14 @@
 		findUserById(updateId);
 		console.log("Selected user populated.")
 		
+		
 	}
 	
 	function updateUser(){
-		if(updateId == -1){
+		
+		console.log("UpdateId: " , updateId);
+		console.log("userSelected: ", userSelected);
+		if(updateId == -1 && userSelected== false){
 			alert("Select a user to update !");
 		}
 		else{
@@ -132,12 +146,20 @@
 			userService
 	        .updateUser(updateId, user)
 	        .then(findAllUsers);
+			
+//			userSelected = false;
+//			updateId = -1;
+			
 			$('#usernameFld').val("");
 			$('#passwordFld').val("");
 			$('#firstNameFld').val("");
 			$('#lastNameFld').val("");
 			$('#role').val("FACULTY");
 			alert('User successfully updated!')
+			
+			userSelected = false;
+			updateId = -1;
+			
 		}
 	}
 	

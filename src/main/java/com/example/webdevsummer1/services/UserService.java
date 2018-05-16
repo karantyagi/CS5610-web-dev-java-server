@@ -85,8 +85,8 @@ public class UserService {
 			user.setLastName(newUser.getLastName());
 			user.setRole(newUser.getRole());
 			user.setDateOfBirth(newUser.getDateOfBirth());
+			//System.out.println("\n.\n.\n.\n.\nUSER DOB:"+user.getDateOfBirth()+"\n.\n.\n.\n.");
 			repository.save(user);
-			System.out.println(user.toString());
 			return user;
 		}
 		return null;
