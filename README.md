@@ -3,7 +3,7 @@ Repository for CS5610-Web Development course at Northeastern University.
 
 ## `Purpose` <br/>
 
-> Deploying a Spring Boot web app on heroku.
+> Deploying a Spring Boot web app on heroku.<br>
 > We have a Tomcat/Java server which is connected to MySQL database, and is hosting the jQuery client.
 
 __Link__: https://kt-web-dev-java-server.herokuapp.com/
