@@ -1,8 +1,10 @@
 (function() {
     $(init);
     
-    
+    var username
     var $staticUserName;
+    var $firstName;
+    var $lastName;
     var $email;
     var $phone;
     var $role;
@@ -11,32 +13,36 @@
     var userId = queryURL.substring(queryURL.lastIndexOf("id=")+3);
    // var userId = 612; // harshmeet
    console.log("userID: ",userId);
+   
+   
     
     var userService = new UserServiceClient();
 
     function init() {
 
     	$staticUserName = $("#staticUserName");
+    	$firstName= $("#inputFirstName");
+    	$lastName= $("#inputLastName");
     	$email = $("#inputEmail");
         $phone = $("#inputPhone");
         $role =  $("#inputRole");
         //$date =  $("#inputDate");
+        $date =  $("#inputDate");
+        console.log("date: ",$date.val());
         $("#updateBtn").click(updateUser);
         $("#logoutBtn").click(logoutUser);
         
         //console.log( $logoutBtn);
-        
         //console.log("DATE:");
         //console.log($date);
-       
-       findUserById(userId);
-
-   
-        
+        findUserById(userId);
+  
     }
     
     function updateUser(){
     	 var user = {
+    			 	firstName: $firstName.val(),
+    			 	lastName: $lastName.val(),
     	            phone: $phone.val(),
     	            email: $email.val(),
     	            role: $role.val()
@@ -71,10 +77,18 @@
     function renderUser(user){
     	console.log(user);
     	$staticUserName.val(user.username);
-    	$email.val(user.email);
-    	$phone.val(user.phone);
-    	$role.val(user.role);
-    	//$date.val(user.date);
+    	if(user.firstName != null){$firstName.val(user.firstName); }
+    	if(user.lastName != null){$lastName.val(user.lastName); }
+    	if(user.email != null){$email.val(user.email); }
+    	if(user.phone != null){$phone.val(user.phone);}
+    	if(user.role != null){$role.val(user.role);}
+    	if(user.dateOfBirth != null)
+    		{ $date.val(user.dateOfBirth); }
+    	else{
+            document.querySelector("#inputDate").valueAsDate = new Date();
+            $date =  $("#inputDate");
+            console.log("DATE is null", $date.val());
+    	}
     }
 
 })();

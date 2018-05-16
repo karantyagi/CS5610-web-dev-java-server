@@ -90,7 +90,8 @@
 	        if(response === null) {
 	            alert('Unable to register. Please try again.')
 	        } else {
-	            alert("Registration done! You can now login and update your profile.");
+	            alert("Registration done! You can now update your profile.");
+	            // TO DO
 	            clear();
 	            
 	        }

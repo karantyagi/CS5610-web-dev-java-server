@@ -144,12 +144,12 @@
 	function findUserById(updateId) {
         userService
             .findUserById(updateId)
-            .then(selectUser);
+            .then(renderUser);
     }
 	
 	// render user populates the fields
-	function selectUser(user){
-		//console.log("inside selectUser ..we are getting correct user");
+	function renderUser(user){
+		//console.log("inside renderUser ..we are getting correct user");
 		//console.log(user);
 		$('#usernameFld').val(user.username);
 		$('#passwordFld').val(user.password);
