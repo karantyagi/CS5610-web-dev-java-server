@@ -40,8 +40,8 @@
             alert('Username or password incorrect.')
         } else {
             alert("You are logged in !");  
-            //window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html"+"?id="+users[0].id);
-            window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/profile/profile.template.client.html"+"?id="+users[0].id);
+            window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html"+"?id="+users[0].id);
+//            window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/profile/profile.template.client.html"+"?id="+users[0].id);
         }
     } // end of success function
     
