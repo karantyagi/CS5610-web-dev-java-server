@@ -7,7 +7,10 @@
     var $phone;
     var $role;
     var $date;
-    var userId = 612; // harshmeet
+    var queryURL = window.location.href;
+    var userId = queryURL.substring(queryURL.lastIndexOf("id=")+3);
+   // var userId = 612; // harshmeet
+   console.log("userID: ",userId);
     
     var userService = new UserServiceClient();
 

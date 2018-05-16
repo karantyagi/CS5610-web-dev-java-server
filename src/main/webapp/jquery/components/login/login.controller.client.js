@@ -9,12 +9,12 @@
     } // end of main function
     
     function login(){
-    	console.log("Login button clicked");
+    	//console.log("Login button clicked");
     	if(validate()){
     		var user = {
 					username: $('#usernameFld').val(),
 					password: $('#passwordFld').val()};
-    	console.log(user);	
+    	//console.log(user);	
     	validateUser(user);
     	   
     	}
@@ -24,8 +24,25 @@
    
     function validateUser(){
     	
-    	console.log("user find user by credentials...coming up...")
+    	//console.log("user find user by credentials...coming up...")
+    	var user = {
+					username: $('#usernameFld').val(),
+					password: $('#passwordFld').val()};
+    	
+    	userService
+    		.loginUser(user.username,user.password)
+    		.then(findUser);
     }
+    
+    function findUser(users) {
+    	console.log(users.length);
+        if(users.length == 0) {
+            alert('Username or password incorrect.')
+        } else {
+            alert("You are logged in !");  
+            window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html"+"?id="+users[0].id);
+        }
+    } // end of success function
     
     
     
@@ -34,7 +51,7 @@
     	var username = $('#usernameFld').val();
 		var password = $('#passwordFld').val();
 		
-		console.log("inside validations");
+		//console.log("inside validations");
 		
 		// Validations
 		
