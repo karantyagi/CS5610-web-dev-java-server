@@ -8,21 +8,21 @@ function UserServiceClient() {
    this.registerUser = registerUser;
    this.loginUser = loginUser;
    
-   this.url =
-'http://localhost:8080/api/user';
 //   this.url =
-//	   'https://kt-web-dev-java-server.herokuapp.com/api/user';
+//'http://localhost:8080/api/user';
+   this.url =
+	   'https://kt-web-dev-java-server.herokuapp.com/api/user';
    
-   this.urlregister =
-	   'http://localhost:8080/api/register';
 //   this.urlregister =
-//	   'https://kt-web-dev-java-server.herokuapp.com/api/register';
+//	   'http://localhost:8080/api/register';
+   this.urlregister =
+	   'https://kt-web-dev-java-server.herokuapp.com/api/register';
    
    
-   this.login =
-       'http://localhost:8080/api/login';
 //   this.login =
-//	   'https://kt-web-dev-java-server.herokuapp.com/api/login';
+//       'http://localhost:8080/api/login';
+   this.login =
+	   'https://kt-web-dev-java-server.herokuapp.com/api/login';
    
    var self = this;
    
