@@ -26,11 +26,11 @@
     	$email = $("#inputEmail");
         $phone = $("#inputPhone");
         $role =  $("#inputRole");
-        //$date =  $("#inputDate");
         $date =  $("#inputDate");
-        console.log("date: ",$date.val());
         $("#updateBtn").click(updateUser);
         $("#logoutBtn").click(logoutUser);
+        
+        $("#updateDateBtn").click(updateDate);
         
         //console.log( $logoutBtn);
         //console.log("DATE:");
@@ -45,12 +45,18 @@
     			 	lastName: $lastName.val(),
     	            phone: $phone.val(),
     	            email: $email.val(),
-    	            role: $role.val()
+    	            role: $role.val(),
+    	            dateOfBirth: $date.val()
     	        };
 
   	        	userService
     	            .updateUser(userId, user)
-    	            .then(success);
+    	            .then(success);	
+    }
+    
+    function updateDate(){
+    	$date =  $("#inputDate");
+        console.log("USER's NEW DOB :  ",$date.val(), " ... update this !");
     	
     }
     
@@ -83,12 +89,14 @@
     	if(user.phone != null){$phone.val(user.phone);}
     	if(user.role != null){$role.val(user.role);}
     	if(user.dateOfBirth != null)
-    		{ $date.val(user.dateOfBirth); }
-    	else{
-            document.querySelector("#inputDate").valueAsDate = new Date();
-            $date =  $("#inputDate");
-            console.log("DATE is null", $date.val());
-    	}
+    		{ 
+    			//console.log(user.dateOfBirth.substring(0,10)); 
+    			$date.val(user.dateOfBirth.substring(0,10)); }
+//    	else{
+//            document.querySelector("#inputDate").valueAsDate = new Date();
+//            $date =  $("#inputDate");
+//            console.log("USER's DOB is null so showing today's date", $date.val());
+//    	}
     }
 
 })();
