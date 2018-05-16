@@ -4,6 +4,7 @@ Repository for CS5610-Web Development course at Northeastern University.
 ## `Purpose` <br/>
 
 > Deploying a Spring Boot web app on heroku.
+Link: https://kt-web-dev-java-server.herokuapp.com/
 
 ## `Karan Tyagi`<br/>
 
