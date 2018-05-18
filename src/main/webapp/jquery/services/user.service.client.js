@@ -8,6 +8,31 @@ function UserServiceClient() {
    this.updateUserProfile = updateUserProfile;
    this.registerUser = registerUser;
    this.loginUser = loginUser;
+   this.profile = profile;
+   this.getSessionAttribute = getSessionAttribute;
+   this.setSessionAttribute = setSessionAttribute;
+   this.invalidateSession = invalidateSession;
+   
+   this.sessionSet = 
+	   'http://localhost:8080/api/session/set';
+//	   this.sessionSet = 
+//		   'https://kt-web-dev-java-server.herokuapp.com/api/session/set';
+   
+   this.sessionGet = 
+	   'http://localhost:8080/api/session/get';
+//	   this.sessionGet = 
+//		   'https://kt-web-dev-java-server.herokuapp.com/api/session/get';
+	   
+   this.profileUrl = 
+	   'http://localhost:8080/api/profile';
+//	   this.profileUrl = 
+//		   'https://kt-web-dev-java-server.herokuapp.com/api/profile';
+	   
+   this.invalidateUrl = 
+	   'http://localhost:8080/api/session/invalidate';
+//	   this.invalidateUrl = 
+//		   'https://kt-web-dev-java-server.herokuapp.com/api/session/invalidate';
+   
    
    this.url =
 'http://localhost:8080/api/user';
@@ -30,6 +55,7 @@ function UserServiceClient() {
    function registerUser(user){
 		 return fetch(this.urlregister,{
 				method: 'post',
+				credentials: 'same-origin',
 				body: JSON.stringify(user),
 				headers: {
 					'content-type': 'application/json'
@@ -40,6 +66,45 @@ function UserServiceClient() {
 			           return response.json();
 			   });
 	 }
+   
+   
+   function profile(user){
+		 return fetch(this.profileUrl,{
+			 credentials: 'same-origin'
+		 })
+			 .then(function(response){
+			       	//console.log("PROFILE  ", response);
+			           return response.json();
+			   });
+	 }
+   
+   function setSessionAttribute(attr,value){
+		 return fetch(this.sessionSet+'/' + attr +'/' + value,{
+			 credentials: 'same-origin'
+		 })
+			 .then(function(response){
+			           return response.text();
+			   });
+	 }
+   
+   function getSessionAttribute(attr){
+		 return fetch(this.sessionGet +'/' + attr,{
+			 credentials: 'same-origin'
+		 })
+			 .then(function(response){
+			           return response.text();
+			   });
+	 }
+   
+   function invalidateSession(){
+		 return fetch(this.invalidateUrl,{
+			 credentials: 'same-origin'
+		 })
+			 .then(function(response){
+			           return response.text();
+			   });
+	 }
+   
    
    
    function loginUser(username, password) {

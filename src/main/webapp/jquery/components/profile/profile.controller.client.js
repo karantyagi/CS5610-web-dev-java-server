@@ -1,7 +1,7 @@
 (function() {
     $(init);
     
-    var username
+    var username;
     var $staticUserName;
     var $firstName;
     var $lastName;
@@ -9,17 +9,33 @@
     var $phone;
     var $role;
     var $date;
-    var queryURL = window.location.href;
-    var userId = queryURL.substring(queryURL.lastIndexOf("id=")+3);
-   // var userId = 612; // harshmeet
+    var userId;
    console.log("userID: ",userId);
-   
-   
-    
+
     var userService = new UserServiceClient();
 
     function init() {
+    	
+    	// TO DO: Check if some session is being maintained.... ???
+    	userService
+    		.getSessionAttribute("id")
+    		.then(checkSession)		
+    }
+    
+    function checkSession(sessionId){
+    	
+    	console.log("GETTING SESSION ID :", sessionId);
 
+    	 if(sessionId == null)
+    		{	
+    	     //$('form').css("filter", "blur(4px)");
+    	    	alert("\nYou are currently not logged in !\nLogin / Sign in to view or update profile !")
+    	    	window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
+    	    	}
+    	 else{
+
+    	userId = sessionId;
+    	
     	$staticUserName = $("#staticUserName");
     	$firstName= $("#inputFirstName");
     	$lastName= $("#inputLastName");
@@ -36,6 +52,7 @@
         //console.log("DATE:");
         //console.log($date);
         findUserById(userId);
+    	 }
   
     }
     
@@ -62,9 +79,24 @@
     
     
     function logoutUser(){
-    	//window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
-    	window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/login/login.template.client.html");
+    	userService
+    	.invalidateSession()
+    	.then(logout);	
     }
+    
+    function logout(message) {
+        if(message == "session invalidated") {
+            alert('Successfully logged out!')
+            window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
+    	//window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/login/login.template.client.html");
+            
+        } else {
+            alert('Error! Try logging out again.');
+        }
+    }
+
+    
+    
     
     function success(response) {
         if(response === null) {

@@ -88,12 +88,39 @@
 
 	 function success(user) {
 	            console.log("ID :", user.id);
-	            alert("Registration done! You can now update your profile.");
-	            //window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/profile/profile.template.client.html"+"?id="+user.id);
-	            window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html"+"?id="+user.id);
+	            alert("Registration done!");
+	            
+	           
+	            userService.profile()
+	           .then(checkProfile);
+	            
+	 } // end of success function
+	 
+	 function checkProfile(user){
+	            if(user.username != "NULL"){
+	        	   console.log("USER IN SESSION:  ",user.username,"  ", user.id,"\n",user);
+	        	   console.log("Now set session and goto profile page");
+	        	   userService
+					.setSessionAttribute("id", user.id)
+					.then(loginSuccess);	        	   
+	           } 
+	            else{
+	            	 console.log("USER SESSION:  Current user is null, that means no session is being maintained");
+	            	 console.log("...the above else SHOULD HAVE NEVER BEEN FIRED ... error ")
+	            }
+	            
+	            
 	            //clear();
 
-	    } // end of success function
+	    }
+	 
+	 function loginSuccess(sessionInfo) {
+         console.log("SET SESSION :", sessionInfo);
+         alert("\nYou are logged in as you just registered.\n You can now update your profile.");
+      // window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/profile/profile.template.client.html");
+      window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html");
+         
+} // end of loginSuccess function
 	 
 	 function clear(){
 			$('#usernameFld').val("");
