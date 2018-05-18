@@ -30,8 +30,8 @@
     		{	
     	     //$('form').css("filter", "blur(4px)");
     	    	alert("\nYou are currently not logged in !\nLogin / Sign in to view or update profile !")
-    	    	//window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
-    	    	window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/login/login.template.client.html");
+    	    	window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
+    	    	//window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/login/login.template.client.html");
     	    	}
     	 else{
 
@@ -88,8 +88,8 @@
     function logout(message) {
         if(message == "session invalidated") {
             alert('Successfully logged out!')
-          //  window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
-    	window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/login/login.template.client.html");
+            window.location.replace("http://localhost:8080/jquery/components/login/login.template.client.html");
+    	// window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/login/login.template.client.html");
             
         } else {
             alert('Error! Try logging out again.');
