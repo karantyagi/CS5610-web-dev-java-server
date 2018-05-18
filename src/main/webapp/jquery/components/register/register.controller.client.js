@@ -117,8 +117,8 @@
 	 function loginSuccess(sessionInfo) {
          console.log("SET SESSION :", sessionInfo);
          alert("\nYou are logged in as you just registered.\n You can now update your profile.");
-      // window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/profile/profile.template.client.html");
-      window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html");
+      window.location.replace("https://kt-web-dev-java-server.herokuapp.com/jquery/components/profile/profile.template.client.html");
+     // window.location.replace("http://localhost:8080/jquery/components/profile/profile.template.client.html");
          
 } // end of loginSuccess function
 	 
