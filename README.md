@@ -6,7 +6,11 @@ Repository for CS5610-Web Development course at Northeastern University.
 > Deploying a Spring Boot web app on heroku.<br>
 > We have a Tomcat/Java server which is connected to MySQL database, and is hosting the jQuery client.
 
-__Link__: https://kt-web-dev-java-server.herokuapp.com/
+## `Links`
+
+* User Admin Module: https://kt-web-dev-java-server.herokuapp.com/
+* Course Manager React Client: [Github Repository](https://github.com/karantyagi/course-manager-client-react)
+* Course Manager Module: 
 
 ## `Karan Tyagi`<br/>
 
