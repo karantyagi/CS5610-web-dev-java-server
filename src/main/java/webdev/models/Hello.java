@@ -1,4 +1,4 @@
-package com.example.webdevsummer1.models;
+package webdev.models;
 
 import javax.persistence.*;
 
