@@ -1,5 +1,13 @@
-/*
--- Query: SHOW CREATE TABLE user
--- Date: 2018-05-13 18:07
-*/
-INSERT INTO `user` (`Table`,`Create Table`) VALUES ('user','CREATE TABLE `user` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `date_of_birth` datetime DEFAULT NULL,\n  `email` varchar(255) DEFAULT NULL,\n  `first_name` varchar(255) DEFAULT NULL,\n  `last_name` varchar(255) DEFAULT NULL,\n  `password` varchar(255) DEFAULT NULL,\n  `phone` varchar(255) DEFAULT NULL,\n  `role` varchar(255) DEFAULT NULL,\n  `username` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=MyISAM DEFAULT CHARSET=utf8');
+Table,"Create Table"
+user,"CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_of_birth` date DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1293 DEFAULT CHARSET=utf8"
