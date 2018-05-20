@@ -8,7 +8,7 @@ Repository for CS5610-Web Development course at Northeastern University.
 
 ## `Links`
 
-* User Admin Module: https://kt-web-dev-java-server.herokuapp.com
+* User Admin Module: https://kt-course-manager-server.herokuapp.com
 * Course Manager React Client: [Github Repository](https://github.com/karantyagi/course-manager-client-react)
 * Course Manager Module: https://kt-web-dev-react-client.herokuapp.com
 
