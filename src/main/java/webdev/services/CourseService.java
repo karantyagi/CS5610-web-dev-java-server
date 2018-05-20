@@ -32,4 +32,5 @@ public class CourseService {
 	public void deleteCourse(@PathVariable("courseId") int id) {
 		courseRepository.deleteById(id);
 	}
+	
 }
