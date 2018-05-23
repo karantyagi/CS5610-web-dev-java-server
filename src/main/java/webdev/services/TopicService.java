@@ -14,21 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import webdev.models.Lesson;
-import webdev.models.Module;
+
 import webdev.models.Topic;
+
 import webdev.repositories.LessonRepository;
 import webdev.repositories.TopicRepository;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class TopicService {
+		
 	@Autowired
 	LessonRepository lessonRepository;
 
 	@Autowired
 	TopicRepository topicRepository;
 	
-	@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson{lessonId}/topic")
+	@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic")
 	public Topic createTopic(
 			@PathVariable("lessonId") int lessonId,
 			@RequestBody Topic newTopic) {
@@ -42,13 +44,14 @@ public class TopicService {
 		return null;		
 	}
 	
-	@GetMapping("/api/course/{courseId}/module/{moduleId}/lesson{lessonId}/topic")
+	@GetMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic")
 	public List<Topic> findAllTopicsForLesson(
 			@PathVariable("lessonId") int lessonId) {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
 		if(data.isPresent()) {
 			Lesson lesson = data.get();
 			return lesson.getTopics();
+			
 		}
 		return null;		
 	}

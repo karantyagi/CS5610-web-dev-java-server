@@ -14,15 +14,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+//import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Course {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
+	
 	@Temporal(TemporalType.TIMESTAMP)
+//	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="GMT")
 	private Date modified;
 	
 	@OneToMany(mappedBy="course")
