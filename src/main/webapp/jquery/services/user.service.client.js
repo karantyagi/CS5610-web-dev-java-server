@@ -14,39 +14,39 @@ function UserServiceClient() {
    this.invalidateSession = invalidateSession;
    
    this.sessionSet = 
-	   'http://localhost:8080/api/session/set';
+	   '/api/session/set';
 //	   this.sessionSet = 
 //		   'https://kt-web-dev-java-server.herokuapp.com/api/session/set';
    
    this.sessionGet = 
-	   'http://localhost:8080/api/session/get';
+	   '/api/session/get';
 //	   this.sessionGet = 
 //		   'https://kt-web-dev-java-server.herokuapp.com/api/session/get';
 	   
    this.profileUrl = 
-	   'http://localhost:8080/api/profile';
+	   '/api/profile';
 //	   this.profileUrl = 
 //		   'https://kt-web-dev-java-server.herokuapp.com/api/profile';
 	   
    this.invalidateUrl = 
-	   'http://localhost:8080/api/session/invalidate';
+	   '/api/session/invalidate';
 //	   this.invalidateUrl = 
 //		   'https://kt-web-dev-java-server.herokuapp.com/api/session/invalidate';
    
    
    this.url =
-'http://localhost:8080/api/user';
+'/api/user';
 //   this.url =
 //	   'https://kt-web-dev-java-server.herokuapp.com/api/user';
    
    this.urlregister =
-	   'http://localhost:8080/api/register';
+	   '/api/register';
 //   this.urlregister =
 //	   'https://kt-web-dev-java-server.herokuapp.com/api/register';
    
    
    this.login =
-       'http://localhost:8080/api/login';
+       '/api/login';
 //   this.login =
 //	   'https://kt-web-dev-java-server.herokuapp.com/api/login';
    
