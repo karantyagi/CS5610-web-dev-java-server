@@ -21,7 +21,7 @@ public class Lesson {
 	  @JsonIgnore
 	  private Module module;	
 	  
-	  @OneToMany(mappedBy="lesson")
+	  @OneToMany(mappedBy="lesson",orphanRemoval=true)
 		private List<Topic> topics;
 
 	public int getId() {

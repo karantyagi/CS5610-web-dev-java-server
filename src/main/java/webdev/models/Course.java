@@ -27,7 +27,7 @@ public class Course {
 //	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="GMT")
 	private Date modified;
 	
-	@OneToMany(mappedBy="course")
+	@OneToMany(mappedBy="course",orphanRemoval=true)
 	private List<Module> modules;
 	
 	
