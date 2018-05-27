@@ -1,11 +1,13 @@
 package webdev.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
@@ -14,9 +16,19 @@ public class Topic {
 	  @GeneratedValue(strategy=GenerationType.IDENTITY)
 	  private int id;
 	  private String title;
+	  
+	  
+	  @OneToMany(mappedBy="topic",orphanRemoval=true)
+		private List<Widget> widgets;
+	  
+	
+	  
+	  
 	  @ManyToOne
 	  @JsonIgnore
 	  private Lesson lesson;
+	  
+	  
 	public int getId() {
 		return id;
 	}
