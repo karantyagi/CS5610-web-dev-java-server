@@ -2,6 +2,7 @@ package webdev.services;
 
 
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,11 @@ public class WidgetService {
 @GetMapping("/api/widget")
 	public List<Widget> findAllWidgets()
 	{
-		return (List<Widget>) widgetRepository.findAll();
+		List<Widget> all;
+		all = (List<Widget>) widgetRepository.findAll();
+		all.sort(Comparator.comparing(Widget::getWidgetOrder));
+//		all.sort(Comparator.comparing(Widget::getWidgetOrder).reversed());
+		return all;
 	}
 
 
