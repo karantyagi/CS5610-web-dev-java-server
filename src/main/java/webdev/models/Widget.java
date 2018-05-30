@@ -35,7 +35,7 @@ public class Widget {
 	private String listItems;
 	private String listType;
 	
-	@Column(name="widget_order")
+	@Column(name="widget_order", nullable = false)
 	private int widgetOrder;
 
 	public int getId() {

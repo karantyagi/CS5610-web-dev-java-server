@@ -16,14 +16,10 @@ public class Topic {
 	  @GeneratedValue(strategy=GenerationType.IDENTITY)
 	  private int id;
 	  private String title;
-	  
-	  
+	  	  
 	  @OneToMany(mappedBy="topic",orphanRemoval=true)
 		private List<Widget> widgets;
-	  
-	
-	  
-	  
+
 	  @ManyToOne
 	  @JsonIgnore
 	  private Lesson lesson;
