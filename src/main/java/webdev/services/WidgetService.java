@@ -1,7 +1,5 @@
 package webdev.services;
 
-
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -61,31 +59,6 @@ public List<Widget> findAllWidgetsForTopic(
 	return empty;		
 }
 
-//@GetMapping("/api/widget/{widgetId}")
-//public Widget findWidgetById(@PathVariable("widgetId") int widgetId) {
-//	Optional<Widget> data = widgetRepository.findById(widgetId);
-//	if(data.isPresent()) {
-//		return data.get();
-//	}
-//	Widget notPresent = new Widget();
-//	notPresent.setId(0);
-//	return notPresent;
-//}
-
-//@PostMapping("/api/topic/{topicId}/widget")
-//public Widget createWidget(
-//		@PathVariable("topicId") int topicId,
-//		@RequestBody Widget newWidget) {
-//	Optional<Topic> data = topicRepository.findById(topicId);
-//	
-//	if(data.isPresent()) {
-//		Topic topic = data.get();
-//		newWidget.setTopic(topic);
-//		return widgetRepository.save(newWidget);
-//	}
-//	return null;		
-//}
-
 
 @PutMapping("/api/widget/{widgetId}/save")
 public Widget updateWidget(@PathVariable("widgetId") int widgetId, @RequestBody Widget newWidget) {
@@ -118,8 +91,6 @@ public Widget updateWidget(@PathVariable("widgetId") int widgetId, @RequestBody 
 }
 
 
-
-
 @DeleteMapping("/api/widget/{widgetId}")
 public void deleteWidgetById(@PathVariable("widgetId") int widgetId)
 {
@@ -146,28 +117,6 @@ public List<Widget> deleteAllWidgetsByTopic(@PathVariable("topicId") int topicId
 		 
 		 return all;
 }
-
-//
-//@PutMapping("/api/user/{userId}")
-//public User updateUser(@PathVariable("userId") int userId, @RequestBody User newUser) {
-//	Optional<User> data = repository.findById(userId);
-//	if(data.isPresent()) {
-//		User user = data.get();
-//		user.setUsername(newUser.getUsername());
-//		user.setPassword(newUser.getPassword());
-//		user.setEmail(newUser.getEmail());
-//		user.setPhone(newUser.getPhone());
-//		user.setFirstName(newUser.getFirstName());
-//		user.setLastName(newUser.getLastName());
-//		user.setRole(newUser.getRole());
-//		user.setDateOfBirth(newUser.getDateOfBirth());
-//		//System.out.println("\n.\n.\n.\n.\nUSER DOB:"+user.getDateOfBirth()+"\n.\n.\n.\n.");
-//		repository.save(user);
-//		return user;
-//	}
-//	return null;
-//}
-//
 
 
 @PostMapping("/api/topic/{topicId}/widget")
