@@ -1,5 +1,6 @@
 package webdev.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,12 +49,13 @@ public class TopicService {
 	public List<Topic> findAllTopicsForLesson(
 			@PathVariable("lessonId") int lessonId) {
 		Optional<Lesson> data = lessonRepository.findById(lessonId);
+		List<Topic> empty = new ArrayList<>();
 		if(data.isPresent()) {
 			Lesson lesson = data.get();
 			return lesson.getTopics();
 			
 		}
-		return null;		
+		return empty;		
 	}
 	
 	@DeleteMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/topic/{topicId}")
