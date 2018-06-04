@@ -11,6 +11,7 @@ import webdev.models.question.MultipleChoiceExamQuestion;
 import webdev.models.question.EssayExamQuestion;
 import webdev.models.question.TrueOrFalseExamQuestion;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,49 @@ public class QuestionService {
 
 	@Autowired
 	ExamRepository examRepository;
+	
+	
+	@GetMapping("/api/question")
+	public List<BaseExamQuestion> findAllQuestions()
+	{
+		List<BaseExamQuestion> all;
+		all = (List<BaseExamQuestion>) baseRepo.findAll();
+		return all;
+	}
+	
+	@GetMapping("/api/question/choice")
+	public List<MultipleChoiceExamQuestion> findAllChoiceQuestions()
+	{
+		List<MultipleChoiceExamQuestion> all;
+		all = (List<MultipleChoiceExamQuestion>) choiceRepo.findAll();
+		return all;
+	}
+	
+	@GetMapping("/api/question/fb")
+	public List<FillInTheBlanksExamQuestion> findAllFillInBlankQuestions()
+	{
+		List<FillInTheBlanksExamQuestion> all;
+		all = (List<FillInTheBlanksExamQuestion>) fillRepo.findAll();
+		return all;
+	}
+	
+	@GetMapping("/api/question/tf")
+	public List<TrueOrFalseExamQuestion> findAlltrueFalseQuestions()
+	{
+		List<TrueOrFalseExamQuestion> all;
+		all = (List<TrueOrFalseExamQuestion>) trueRepo.findAll();
+		return all;
+	}
+	
+	@GetMapping("/api/question/essay")
+	public List<EssayExamQuestion> findAllEssayQuestions()
+	{
+		List<EssayExamQuestion> all;
+		all = (List<EssayExamQuestion>) essayRepo.findAll();
+		return all;
+	}
+	
+	
 	
 	@GetMapping("/api/exam/{examId}/choice")
 	public MultipleChoiceExamQuestion createChoiceQue
