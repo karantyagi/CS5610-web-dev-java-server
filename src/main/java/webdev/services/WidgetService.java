@@ -36,7 +36,7 @@ public class WidgetService {
 @GetMapping("/api/widget")
 	public List<Widget> findAllWidgets()
 	{
-		List<Widget> all;
+		List<Widget> all = new ArrayList<>();
 		all = (List<Widget>) widgetRepository.findAll();
 		all.sort(Comparator.comparing(Widget::getWidgetOrder));
 //		all.sort(Comparator.comparing(Widget::getWidgetOrder).reversed());

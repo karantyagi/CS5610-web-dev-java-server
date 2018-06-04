@@ -13,6 +13,7 @@ import webdev.models.question.BaseExamQuestion;
 public class Exam extends Widget {
 	private String title;
 	private String description;
+	
 	@OneToMany(mappedBy="exam")
 	@JsonIgnore
 	private List<BaseExamQuestion> questions;

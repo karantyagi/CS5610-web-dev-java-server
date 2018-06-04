@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "JOINED_ESSAY_QUESTION")
 public class EssayExamQuestion
 	extends BaseExamQuestion {
-	@Column(name = "ANSWER", nullable = false)
+	@Column(name = "ANSWER")
 	private String answer;
 
 	public String getAnswer() {

@@ -9,18 +9,19 @@ import javax.persistence.Table;
 @Table(name = "JOINED_MULTIPLE_CHOICE_QUESTION")
 public class MultipleChoiceExamQuestion
 	extends BaseExamQuestion {
-	@Column(name = "ANSWER", nullable = false)
-	private String answer;
+	@Column(name = "CORRECT_CHOICE", nullable = false)
+	private String correctChoice;
 	
 	private String choiceA;
 	private String choiceB;
 	private String choiceC;
 	private String choiceD;
-	public String getAnswer() {
-		return answer;
+	
+	public String getCorrectChoice() {
+		return correctChoice;
 	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setCorrectChoice(String correctChoice) {
+		this.correctChoice = correctChoice;
 	}
 	public String getChoiceA() {
 		return choiceA;
