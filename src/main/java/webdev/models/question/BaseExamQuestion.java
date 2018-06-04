@@ -66,4 +66,12 @@ public class BaseExamQuestion{
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
+	public Exam getExam() {
+		return exam;
+	}
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+	
+	
 }

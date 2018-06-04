@@ -15,27 +15,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import webdev.models.Exam;
-import webdev.models.Lesson;
 import webdev.models.Topic;
-import webdev.models.User;
-import webdev.models.question.BaseExamQuestion;
-import webdev.models.question.FillInTheBlanksExamQuestion;
-import webdev.models.question.MultipleChoiceExamQuestion;
-import webdev.models.question.EssayExamQuestion;
-import webdev.models.question.TrueOrFalseExamQuestion;
 
 import webdev.models.Widget;
 import webdev.repositories.ExamRepository;
 import webdev.repositories.TopicRepository;
 import webdev.repositories.WidgetRepository;
-import webdev.repositories.MultipleChoiceExamQuestionRepository;
-import webdev.repositories.TrueOrFalseExamQuestionRepository;
-import webdev.repositories.EssayExamQuestionRepository;
-import webdev.repositories.FillInTheBlanksExamQuestionRepository;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ExamService {
 	@Autowired
 	ExamRepository examRepository;
