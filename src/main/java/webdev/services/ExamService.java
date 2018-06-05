@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -66,7 +67,9 @@ public class ExamService {
 			Topic topic = data.get();
 			List<Widget> all = topic.getWidgets();
 			
-			// Filter for exams from widget - dtype;
+			// Filtering for exams from widgets
+						all = all.stream()
+							    .filter(w -> w.getWidgetType().equals("Exam")).collect(Collectors.toList());
 			return all;
 		}
 		

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -65,7 +66,9 @@ public class AssignmentService {
 		if(data.isPresent()) {
 			Topic topic = data.get();
 			List<Widget> all = topic.getWidgets();
-			// Filter for exams from widget - dtype;
+			// Filtering for assignments from widgets
+			all = all.stream()
+				    .filter(w -> w.getWidgetType().equals("Assignment")).collect(Collectors.toList());
 			return all;
 		}
 		
