@@ -1,6 +1,5 @@
 package webdev.models.question;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -8,12 +7,16 @@ import javax.persistence.Table;
 @Table(name = "JOINED_FILL_IN_THE_BLANK_QUESTION")
 public class FillInTheBlanksExamQuestion
 	extends BaseExamQuestion {
-	@Column(name = "VARIABLES", nullable = false)
-	private String variables;
-	public String getVariables() {
-		return variables;
+
+	private String blank;
+
+	public String getBlank() {
+		return blank;
 	}
-	public void setVariables(String variables) {
-		this.variables = variables;
+
+	public void setBlank(String blank) {
+		this.blank = blank;
 	}
+	
+	
 }
