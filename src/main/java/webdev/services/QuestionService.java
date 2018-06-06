@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -63,6 +64,93 @@ public class QuestionService {
 		List<BaseExamQuestion> all;
 		all = (List<BaseExamQuestion>) baseRepo.findAll();
 		return all;
+	}
+	
+	@GetMapping("/api/question/{questionId}")
+	public BaseExamQuestion findQuestionById(@PathVariable("questionId") int questionId)
+	{
+		Optional<BaseExamQuestion> data = baseRepo.findById(questionId);
+		if(data.isPresent()) {
+			return data.get();
+		}
+		// alternate to returning null
+		BaseExamQuestion empty = new BaseExamQuestion();
+		empty.setTitle("NoQuestionFound");
+		return empty;
+	}
+	
+	@PutMapping("/api/question/{questionId}/essay")
+	public EssayExamQuestion updateEssayQuestion
+	(@PathVariable("questionId") int questionId, @RequestBody EssayExamQuestion newQuestion) {
+		Optional<EssayExamQuestion> data = essayRepo.findById(questionId);
+		if(data.isPresent()) {
+			EssayExamQuestion question = data.get();
+			
+			question.setTitle(newQuestion.getTitle());
+			question.setPoints(newQuestion.getPoints());
+			question.setDescription(newQuestion.getDescription());
+			
+			essayRepo.save(question);
+			return question;
+		}
+		return null;
+	}
+	
+	@PutMapping("/api/question/{questionId}/choice")
+	public MultipleChoiceExamQuestion updateMultipleChoiceQuestion
+	(@PathVariable("questionId") int questionId, @RequestBody MultipleChoiceExamQuestion newQuestion) {
+		Optional<MultipleChoiceExamQuestion> data = choiceRepo.findById(questionId);
+		if(data.isPresent()) {
+			MultipleChoiceExamQuestion question = data.get();
+			
+			question.setTitle(newQuestion.getTitle());
+			question.setPoints(newQuestion.getPoints());
+			question.setDescription(newQuestion.getDescription());
+			question.setCorrectChoice(newQuestion.getCorrectChoice());
+			question.setChoiceA(newQuestion.getChoiceA());
+			question.setChoiceB(newQuestion.getChoiceB());
+			question.setChoiceC(newQuestion.getChoiceC());
+			question.setChoiceD(newQuestion.getChoiceD());
+			
+			choiceRepo.save(question);
+			return question;
+		}
+		return null;
+	}
+	
+	@PutMapping("/api/question/{questionId}/fb")
+	public FillInTheBlanksExamQuestion updateFillBLankQuestion
+	(@PathVariable("questionId") int questionId, @RequestBody FillInTheBlanksExamQuestion newQuestion) {
+		Optional<FillInTheBlanksExamQuestion> data = fillRepo.findById(questionId);
+		if(data.isPresent()) {
+			FillInTheBlanksExamQuestion question = data.get();
+			
+			question.setTitle(newQuestion.getTitle());
+			question.setPoints(newQuestion.getPoints());
+			question.setDescription(newQuestion.getDescription());
+			question.setBlank(newQuestion.getBlank());
+			fillRepo.save(question);
+			return question;
+		}
+		return null;
+	}
+	
+	@PutMapping("/api/question/{questionId}/tf")
+	public TrueOrFalseExamQuestion updateTrueFalseQuestion
+	(@PathVariable("questionId") int questionId, @RequestBody TrueOrFalseExamQuestion newQuestion) {
+		Optional<TrueOrFalseExamQuestion> data = trueRepo.findById(questionId);
+		if(data.isPresent()) {
+			TrueOrFalseExamQuestion question = data.get();
+			
+			question.setTitle(newQuestion.getTitle());
+			question.setPoints(newQuestion.getPoints());
+			question.setDescription(newQuestion.getDescription());
+			question.setIsTrue(newQuestion.getIsTrue());
+			
+			trueRepo.save(question);
+			return question;
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/question/choice")
@@ -163,6 +251,8 @@ public class QuestionService {
 //		widgetRepository.deleteById(qId);
 		baseRepo.deleteById(qId);
 	}
+	
+	
 
 		
 	
