@@ -4,6 +4,7 @@ package webdev.services;
 import webdev.repositories.TopicRepository;
 import webdev.repositories.WidgetRepository;
 import webdev.models.Exam;
+import webdev.models.Lesson;
 import webdev.models.Topic;
 import webdev.models.question.BaseExamQuestion;
 import webdev.models.question.FillInTheBlanksExamQuestion;
@@ -11,6 +12,7 @@ import webdev.models.question.MultipleChoiceExamQuestion;
 import webdev.models.question.EssayExamQuestion;
 import webdev.models.question.TrueOrFalseExamQuestion;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -93,9 +96,21 @@ public class QuestionService {
 		return all;
 	}
 	
+	@GetMapping("/api/exam/{examId}/question")
+	public List<BaseExamQuestion> findAllQuestionsForExam(
+			@PathVariable("examId") int examId) {
+		Optional<Exam> data = examRepository.findById(examId);
+		List<BaseExamQuestion> empty = new ArrayList<>();
+		if(data.isPresent()) {
+			Exam exam = data.get();
+			return exam.getQuestions();
+		}
+		return empty;		
+	}
 	
 	
-	@GetMapping("/api/exam/{examId}/choice")
+	
+	@PostMapping("/api/exam/{examId}/choice")
 	public MultipleChoiceExamQuestion createChoiceQue
 	(@PathVariable("examId") int examId,
 	@RequestBody MultipleChoiceExamQuestion que) 
@@ -106,7 +121,7 @@ public class QuestionService {
 		return choiceRepo.save(que);
 	}
 	
-	@GetMapping("/api/exam/{examId}/essay")
+	@PostMapping("/api/exam/{examId}/essay")
 	public EssayExamQuestion createEssayQue
 	(@PathVariable("examId") int examId,
 	@RequestBody EssayExamQuestion que) 
@@ -118,7 +133,7 @@ public class QuestionService {
 	}
 
 	
-	@GetMapping("/api/exam/{examId}/truefalse")
+	@PostMapping("/api/exam/{examId}/truefalse")
 	public TrueOrFalseExamQuestion createTrueFalseQue
 	(@PathVariable("examId") int examId,
 	@RequestBody TrueOrFalseExamQuestion que) 
@@ -129,7 +144,7 @@ public class QuestionService {
 		return trueRepo.save(que);
 	}
 	
-	@GetMapping("/api/exam/{examId}/blanks")
+	@PostMapping("/api/exam/{examId}/blanks")
 	public FillInTheBlanksExamQuestion createFillInBlanksQue
 	(@PathVariable("examId") int examId,
 	@RequestBody FillInTheBlanksExamQuestion que) 
